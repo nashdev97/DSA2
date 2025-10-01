@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> mp; // number -> index
+        
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            
+            // if complement already exists, return indices
+            if (mp.find(complement) != mp.end()) {
+                return {mp[complement], i};
+            }
+            
+            // store current number with index
+            mp[nums[i]] = i;
+        }
+        
+        return {}; // shouldn't reach here as per constraints
+    }
+};
